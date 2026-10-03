@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.Json.Serialization;
+
+namespace WeatherConsoleClient.Application.DTOs;
+
+public class WindDto
+{
+    [JsonPropertyName("speed")]
+    public decimal Speed { get; set; }
+
+    [JsonPropertyName("deg")]
+    public decimal Direction { get; set; }
+}
