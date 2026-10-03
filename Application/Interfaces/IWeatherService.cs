@@ -16,4 +16,7 @@ public interface IWeatherService
     Task<ForecastDto?> GetForecastAsync(
         string city,
         CancellationToken cancellationToken);
+
+    ForecastSummaryDto? CreateForecastSummary(
+        IEnumerable<ForecastItemDto> forecastItems);
 }

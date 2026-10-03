@@ -50,6 +50,10 @@ internal class Program
             IWeatherService,
             WeatherService>();
 
+        services.AddSingleton<
+            IWeatherFormatter,
+            ConsoleWeatherFormatter>();
+
         services.AddScoped<
             ConsoleMenu>();
 

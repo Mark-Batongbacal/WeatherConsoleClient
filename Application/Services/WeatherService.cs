@@ -42,6 +42,25 @@ public class WeatherService : IWeatherService
                 cancellationToken);
     }
 
+    public ForecastSummaryDto? CreateForecastSummary(
+        IEnumerable<ForecastItemDto> forecastItems)
+    {
+        var items = forecastItems.ToList();
+
+        if (items.Count == 0)
+        {
+            return null;
+        }
+
+        return new ForecastSummaryDto
+        {
+            HighestTemperature = items.Max(item => item.Main.Temperature),
+            LowestTemperature = items.Min(item => item.Main.Temperature),
+            AverageTemperature = items.Average(item => item.Main.Temperature),
+            HighestRainChance = items.Max(item => item.ProbabilityOfPrecipitation) * 100m
+        };
+    }
+
     private static void ValidateCity(string city)
     {
         if (string.IsNullOrWhiteSpace(city))
